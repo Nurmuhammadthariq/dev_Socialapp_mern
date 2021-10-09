@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Navbar, NavbarBrand, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/authAction';
 
-const NavBar = () => {
+const NavBar = ({
+  authReducer: { isAuthenticated, loading, user },
+  logout,
+}) => {
+  const authLinks = (
+    <Navbar.Collapse id="responsive-navbar-nav">
+      <Nav className="nav justify-content-end">
+        <Nav.Link onClick={logout}>
+          <i className="fas fa-sign-out-alt"></i> Logout
+        </Nav.Link>
+      </Nav>
+    </Navbar.Collapse>
+  );
+
   const guestLinks = (
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="nav justify-content-end">
@@ -29,14 +45,25 @@ const NavBar = () => {
       bg="dark"
       variant="dark"
     >
-      <NavbarBrand>
+      <NavbarBrand href="/">
         <i className="fas fa-code" /> DevConnector
       </NavbarBrand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-      {guestLinks}
+      {!loading && (
+        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+      )}
     </Navbar>
   );
 };
 
-export default NavBar;
+NavBar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  authReducer: PropTypes.object.isRequired,
+};
+
+const mapStateProps = (state) => ({
+  authReducer: state.authReducer,
+});
+
+export default connect(mapStateProps, { logout })(NavBar);
