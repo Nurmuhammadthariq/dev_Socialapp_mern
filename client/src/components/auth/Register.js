@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alertAction';
+import { register } from '../../actions/authAction';
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,9 +24,14 @@ const Register = ({ setAlert }) => {
     if (password !== passwordConfirm) {
       setAlert('Password do not match', 'danger');
     } else {
-      console.log(formData);
+      register({ name, email, password });
     }
   };
+
+  // Redirect if logged in
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Fragment>
@@ -45,7 +51,6 @@ const Register = ({ setAlert }) => {
                 placeholder="Enter name"
                 name="name"
                 value={name}
-                required
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
@@ -57,7 +62,6 @@ const Register = ({ setAlert }) => {
                 placeholder="Enter Your Email"
                 name="email"
                 value={email}
-                required
                 onChange={(e) => onChange(e)}
               />
               <Form.Text className="text-muted">
@@ -71,9 +75,7 @@ const Register = ({ setAlert }) => {
                 type="password"
                 placeholder="Password"
                 name="password"
-                minLength="8"
                 value={password}
-                required
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
@@ -84,9 +86,7 @@ const Register = ({ setAlert }) => {
                 type="password"
                 placeholder="Confirm Password"
                 name="passwordConfirm"
-                minLength="8"
                 value={passwordConfirm}
-                required
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
@@ -116,6 +116,12 @@ const Register = ({ setAlert }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert })(Register);
+const mapStateProps = (state) => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+});
+
+export default connect(mapStateProps, { setAlert, register })(Register);
