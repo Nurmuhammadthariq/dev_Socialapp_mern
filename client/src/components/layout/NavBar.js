@@ -12,6 +12,15 @@ const NavBar = ({
   const authLinks = (
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="nav justify-content-end">
+        <Nav.Link>
+          <i className="fas fa-laptop"></i> Developers
+        </Nav.Link>
+        <Nav.Link>
+          <i className="fas fa-images"></i> Posts
+        </Nav.Link>
+        <Nav.Link>
+          <i className="fas fa-user"></i> {user && user.name}
+        </Nav.Link>
         <Nav.Link onClick={logout}>
           <i className="fas fa-sign-out-alt"></i> Logout
         </Nav.Link>
