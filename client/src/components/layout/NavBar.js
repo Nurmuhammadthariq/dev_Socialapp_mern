@@ -18,7 +18,7 @@ const NavBar = ({
         <Nav.Link>
           <i className="fas fa-images"></i> Posts
         </Nav.Link>
-        <Nav.Link>
+        <Nav.Link as={Link} to="/dashboard">
           <i className="fas fa-user"></i> {user && user.name}
         </Nav.Link>
         <Nav.Link onClick={logout}>
