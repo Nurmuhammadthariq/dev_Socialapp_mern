@@ -17,7 +17,7 @@ const Dashboard = ({
   }, [getCurrentProfile]);
 
   return (
-    <div>
+    <Fragment>
       <h3>Dashboard</h3>
       <p className="lead">
         <i className="fa fa-user"></i> Welcome!{' '}
@@ -32,12 +32,12 @@ const Dashboard = ({
       ) : (
         <Fragment>
           <p>You have not yet setup a profile, please add some info</p>
-          <Link to="#" className="btn btn-primary my-1">
+          <Link to="/createProfile" className="btn btn-primary my-1">
             Create your profile
           </Link>
         </Fragment>
       )}
-    </div>
+    </Fragment>
   );
 };
 
