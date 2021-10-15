@@ -22,6 +22,7 @@ const Routes = () => {
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createProfile" component={ProfileForm} />
+        <PrivateRoute exact path="/editProfile" component={ProfileForm} />
       </Switch>
     </section>
   );
