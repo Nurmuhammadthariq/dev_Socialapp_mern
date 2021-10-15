@@ -1,7 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import { Form, Col, Container, InputGroup, Button } from 'react-bootstrap';
+
+import { createProfile, getCurrentProfile } from '../../actions/profileAction';
+import { connect } from 'react-redux';
 
 const initialState = {
   company: '',
@@ -17,8 +20,31 @@ const initialState = {
   youtube: '',
   instagram: '',
 };
-const ProfileForm = (props) => {
+const ProfileForm = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history,
+}) => {
   const [formData, setFormData] = useState(initialState);
+
+  const creatingProfile = useRouteMatch('/createProfile');
+
+  useEffect(() => {
+    if (!profile) getCurrentProfile();
+    if (!loading && profile) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile[key];
+      }
+      for (const key in profile.social) {
+        if (key in profileData) profileData[key] = profile.social[key];
+      }
+      if (Array.isArray(profileData.skills))
+        profileData.skills = profileData.skills.join(', ');
+      setFormData(profileData);
+    }
+  }, [loading, getCurrentProfile, profile]);
 
   const {
     company,
@@ -38,30 +64,35 @@ const ProfileForm = (props) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    createProfile(formData, history, profile ? true : false);
+  };
+
   return (
     <Fragment>
       <Container className="createProfile mt-1">
-        <h3 className="edit-profile text-center">Create Your profile</h3>
-        <Form className="profile-form text-start d-flex flex-wrap">
-          <Form.Group as={Col} md="12" controlId="companyName">
+        <h3 className="mb-2 large text-primary">
+          {creatingProfile ? 'Create Your Profile' : 'Edit Your Profile'}
+        </h3>
+        <Form className="form" onSubmit={onSubmit}>
+          <Form.Group as={Col} md="6" controlId="companyName">
             <Form.Label>Working Company Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="ABC Infotech Private Limited "
+              placeholder="Company"
               name="company"
               value={company}
               onChange={onChange}
-              required
             />
           </Form.Group>
           <Form.Group as={Col} md="6" controlId="selectDesignation">
-            <Form.Label>Designation</Form.Label>
+            <Form.Label>Status</Form.Label>
             <Form.Control
               as="select"
               custom
               name="status"
               value={status}
-              required
               onChange={onChange}
             >
               <option>* Select Professional Status</option>
@@ -89,12 +120,11 @@ const ProfileForm = (props) => {
                 name="website"
                 value={website}
                 onChange={onChange}
-                required
               />
             </InputGroup>
           </Form.Group>
 
-          <Form.Group as={Col} md="3" controlId="location">
+          <Form.Group as={Col} md="6" controlId="location">
             <Form.Label>Current Location</Form.Label>
             <Form.Control
               type="text"
@@ -102,7 +132,6 @@ const ProfileForm = (props) => {
               name="location"
               value={location}
               onChange={onChange}
-              required
             />
           </Form.Group>
           <Form.Group as={Col} md="6" controlId="skills">
@@ -113,13 +142,12 @@ const ProfileForm = (props) => {
               name="skills"
               value={skills}
               onChange={onChange}
-              required
             />
             <small className="small-text">
               Please use comma separated values{' '}
             </small>
           </Form.Group>
-          <Form.Group as={Col} md="3" controlId="githubusername">
+          <Form.Group as={Col} md="6" controlId="githubusername">
             <Form.Label>GitHub Username</Form.Label>
             <Form.Control
               type="text"
@@ -127,7 +155,6 @@ const ProfileForm = (props) => {
               name="githubusername"
               value={githubusername}
               onChange={onChange}
-              required
             />
           </Form.Group>
           <Form.Group as={Col} md="12">
@@ -213,6 +240,16 @@ const ProfileForm = (props) => {
   );
 };
 
-ProfileForm.propTypes = {};
+ProfileForm.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+};
 
-export default ProfileForm;
+const mapStateProps = (state) => ({
+  profile: state.profileReducer,
+});
+
+export default connect(mapStateProps, { createProfile, getCurrentProfile })(
+  ProfileForm
+);
