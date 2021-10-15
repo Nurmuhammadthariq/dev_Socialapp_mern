@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import DashboardActions from './DashboardActions';
 
 //Redux
 import { connect } from 'react-redux';
@@ -25,6 +26,8 @@ const Dashboard = ({
       </p>
       {profile !== null ? (
         <Fragment>
+          <DashboardActions />
+
           <div className="my-5">
             <Button variant="danger">Delete your account</Button>
           </div>
