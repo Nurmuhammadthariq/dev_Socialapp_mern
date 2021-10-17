@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import formatDate from '../../utils/formatDate';
 import { Table, Row, Col } from 'react-bootstrap';
 
 const Experience = ({ experience }) => {
@@ -8,7 +10,10 @@ const Experience = ({ experience }) => {
       <td>{exp.company}</td>
       <td>{exp.title}</td>
       <td>
-        {exp.from} - {exp.to ? exp.to : 'Now'}
+        {formatDate(exp.from)} - {exp.to ? formatDate(exp.to) : 'Now'}
+      </td>
+      <td>
+        <button className="btn btn-danger">Delete</button>
       </td>
     </tr>
   ));
@@ -21,9 +26,10 @@ const Experience = ({ experience }) => {
           <Table className="table" responsive>
             <thead>
               <tr>
-                <td>Company</td>
-                <td>Title</td>
-                <td>Years</td>
+                <th>Company</th>
+                <th>Title</th>
+                <th>Years</th>
+                <th />
               </tr>
             </thead>
             <tbody>{experiences}</tbody>
@@ -38,4 +44,4 @@ Experience.propTypes = {
   experience: PropTypes.array.isRequired,
 };
 
-export default Experience;
+export default connect(null)(Experience);
