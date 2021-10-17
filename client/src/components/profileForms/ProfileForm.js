@@ -75,7 +75,10 @@ const ProfileForm = ({
         <h3 className="mb-2 large text-primary">
           {creatingProfile ? 'Create Your Profile' : 'Edit Your Profile'}
         </h3>
-        <Form className="form" onSubmit={onSubmit}>
+        <Form
+          className="profile-form text-start d-flex flex-wrap"
+          onSubmit={onSubmit}
+        >
           <Form.Group as={Col} md="6" controlId="companyName">
             <Form.Label>Working Company Name</Form.Label>
             <Form.Control
