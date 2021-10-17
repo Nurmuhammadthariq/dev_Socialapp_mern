@@ -235,11 +235,12 @@ ul {
 }
 
 .table {
-    color: rgb(189, 184, 184) !important;
+    color: var(--color-1) !important;
+    font-weight: 500;
 }
 
 .table thead {
-    color: var(--secondary-color) !important;
+    color: var(--color-1) !important;
 }
 
 .table tbody tr:hover {

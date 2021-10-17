@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
+import Education from './Education';
 
 //Redux
 import { connect } from 'react-redux';
@@ -29,6 +30,7 @@ const Dashboard = ({
         <Fragment>
           <DashboardActions />
           <Experience experience={profile.experience} />
+          <Education education={profile.education} />
 
           <div className="my-5">
             <Button variant="danger">Delete your account</Button>
