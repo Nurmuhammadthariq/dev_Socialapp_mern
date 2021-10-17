@@ -34,7 +34,6 @@ const AddExperience = ({ addExperience, history }) => {
         className="form text-start d-flex flex-wrap"
         onSubmit={(e) => {
           e.preventDefault();
-          window.location.reload(false);
           addExperience(formData, history);
         }}
       >
