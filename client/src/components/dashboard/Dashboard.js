@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import DashboardActions from './DashboardActions';
+import Experience from './Experience';
 
 //Redux
 import { connect } from 'react-redux';
@@ -27,6 +28,7 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
+          <Experience experience={profile.experience} />
 
           <div className="my-5">
             <Button variant="danger">Delete your account</Button>

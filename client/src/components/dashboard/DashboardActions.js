@@ -18,7 +18,7 @@ const DashboardActions = () => {
             }
           >
             <Link to="/editProfile" className="btn submit mr-2">
-              <i className="fas fa-edit" /> Edit Profile
+              <i className="fas fa-edit" /> Edit
             </Link>
           </OverlayTrigger>
         </Col>
