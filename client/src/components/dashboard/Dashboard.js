@@ -1,17 +1,18 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 
 //Redux
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profileAction';
+import { getCurrentProfile, deleteAccount } from '../../actions/profileAction';
 
 const Dashboard = ({
   getCurrentProfile,
+  deleteAccount,
   auth: { user },
   profile: { profile, loading },
 }) => {
@@ -33,7 +34,9 @@ const Dashboard = ({
           <Education education={profile.education} />
 
           <div className="my-5">
-            <Button variant="danger">Delete your account</Button>
+            <Button onClick={() => deleteAccount()} variant="danger">
+              Delete your account
+            </Button>
           </div>
         </Fragment>
       ) : (
@@ -50,6 +53,7 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
 };
@@ -59,4 +63,6 @@ const mapStateProps = (state) => ({
   profile: state.profileReducer,
 });
 
-export default connect(mapStateProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);
