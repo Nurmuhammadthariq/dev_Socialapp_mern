@@ -14,11 +14,10 @@ import { Col, Row } from 'react-bootstrap';
 const Routes = () => {
   return (
     <section className="container">
-      <Row className="justify-content-md-center">
-        <Col lg={5}>
-          <AlertCard />
-        </Col>
-      </Row>
+      <Col className="text-center d-flex justify-content-around">
+        <AlertCard />
+      </Col>
+
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
