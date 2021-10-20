@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Container, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
