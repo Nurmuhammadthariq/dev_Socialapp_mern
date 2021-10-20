@@ -9,7 +9,7 @@ import AddEducation from '../profileForms/AddEducation';
 import AlertCard from '../layout/AlertCard';
 import PrivateRoute from './PrivateRoute';
 
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 const Routes = () => {
   return (
