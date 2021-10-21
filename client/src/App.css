@@ -7,8 +7,9 @@
     --secondary-color: #01914B;
     --tertiary-color: #59EDAB;
     --color-1: #17a2b8;
-    --color-2: #050E16;
+    --color-2: white;
     --color-3: #45AF47;
+    --color-4: #2c3531;
     --white: #FFFFFF;
     --grey: #50555B;
     --gradient-color: #21d190;
@@ -67,7 +68,6 @@ body {
     margin-top: 2.5rem;
     width: 100%;
     margin-bottom: 3rem;
-    margin-left: 40px;
 }
 
 .lead-1 {
@@ -76,9 +76,9 @@ body {
 }
 
 .submit {
-    background-color: var(--color-1) !important;
-    color: rgb(255, 255, 255);
-    transition: opacity 0.2s ease-in !important;
+    background-color: var(--white) !important;
+    color: var(--color-4);
+    transition:  0.2s ease-out !important;
     border: none;
     border-radius: 6px;
 }
@@ -117,7 +117,7 @@ ul {
 }
 
 .btn {
-    font-weight: 400;
+    font-weight: bold !important;
 }
 
 .btn-signup {
@@ -210,7 +210,7 @@ ul {
 
 
 .text-color-g {
-    color: var(--color-1);
+    color: var(--color-2);
 }
 
 .dash-title {
@@ -257,20 +257,23 @@ ul {
 .profiles .card {
     overflow-x: hidden;
     transition: all .3s ease-in-out;
-    border-radius: 50px;
+    border-radius: 5px;
+    background-color: #1F2833 !important;
+    color: white;
 
 }
 
 .profiles .card:hover {
-    box-shadow: 0px 0.6em 0.2em #93EB45;
+    /* box-shadow: 0px 0.6em 0.2em #93EB45; */
     transform: scale(1.1);
 
 }
 
-.profiles .card,
+.profiles 
 .list-card {
-    background-color: #47db1507 !important;
+    background-color: white;
     color: rgb(143, 165, 143) !important;
+    font-weight: bold;
     font-size: 0.8rem !important;
 
 }
