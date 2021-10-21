@@ -12,9 +12,7 @@ const NavBar = ({
   const authLinks = (
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="nav justify-content-end">
-        <Nav.Link>
-          <i className="fas fa-laptop"></i> Developers
-        </Nav.Link>
+        <Nav.Link href="/profiles">Developers</Nav.Link>
         <Nav.Link>
           <i className="fas fa-images"></i> Posts
         </Nav.Link>
@@ -31,10 +29,7 @@ const NavBar = ({
   const guestLinks = (
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="nav justify-content-end">
-        <Nav.Link as={Link} to="/">
-          <i className="fas fa-laptop" />
-          Developers
-        </Nav.Link>
+        <Nav.Link href="/profiles">Developers</Nav.Link>
         <Nav.Link as={Link} to="/register">
           Register
         </Nav.Link>
