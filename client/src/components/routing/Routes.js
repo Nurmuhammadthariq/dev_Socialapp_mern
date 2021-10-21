@@ -6,6 +6,7 @@ import Login from '../auth/Login';
 import ProfileForm from '../profileForms/ProfileForm';
 import AddExperience from '../profileForms/AddExperience';
 import AddEducation from '../profileForms/AddEducation';
+import Profiles from '../profiles/Profiles';
 import AlertCard from '../layout/AlertCard';
 import PrivateRoute from './PrivateRoute';
 
@@ -21,6 +22,7 @@ const Routes = () => {
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/profiles" component={Profiles} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createProfile" component={ProfileForm} />
         <PrivateRoute exact path="/editProfile" component={ProfileForm} />
