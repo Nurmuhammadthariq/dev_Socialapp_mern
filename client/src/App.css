@@ -76,8 +76,8 @@ body {
 }
 
 .submit {
-    background-color: var(--white) !important;
-    color: var(--color-4);
+    background-color: var(--color-1) !important;
+    color: var(--white);
     transition:  0.2s ease-out !important;
     border: none;
     border-radius: 6px;
