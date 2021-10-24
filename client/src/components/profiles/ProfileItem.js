@@ -33,7 +33,7 @@ const ProfileItem = ({
           <ListGroup horizontal="lg" className="justify-content-center">
             {skills.slice(0, 4).map((skill, index) => (
               <ListGroup.Item className="list-card" key={index}>
-                {skill}
+                <i className="fa fa-free-code-camp" /> {skill}
               </ListGroup.Item>
             ))}
           </ListGroup>
