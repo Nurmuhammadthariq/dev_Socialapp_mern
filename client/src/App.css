@@ -288,8 +288,6 @@ ul {
 .list-card:hover,
 .transparent-bg:hover {
     transform: scale(1.05);
-    box-shadow: 0px 0.4em 0.2em #17a2b8;
-
 }
 
 .globe:hover {
@@ -320,7 +318,7 @@ ul {
 /* Profile // top */
 
 .transparent-bg {
-    background-color: #1F2833;
+    background-color: #030E12;
     transition: all .2s ease-in-out;
     color: white;
 }
