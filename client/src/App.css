@@ -98,7 +98,7 @@ body {
 
 
 a {
-    color: var(--primary-color);
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -296,23 +296,23 @@ ul {
     color: rgb(255, 251, 0);
 }
 
-.fb:hover {
+.facebook:hover {
     color: rgb(0, 47, 255);
 }
 
-.yt:hover {
+.youtube:hover {
     color: rgb(255, 0, 43);
 }
 
-.tw:hover {
+.twitter:hover {
     color: rgb(0, 195, 255);
 }
 
-.ln:hover {
+.linkedin:hover {
     color: rgb(124, 0, 207);
 }
 
-.ins:hover {
+.instagram:hover {
     color: rgb(247, 0, 255);
 }
 
@@ -320,13 +320,16 @@ ul {
 /* Profile // top */
 
 .transparent-bg {
-    background-color: #091f023b;
+    background-color: #1F2833;
     transition: all .2s ease-in-out;
+    color: white;
 }
 
 .bg-less-light {
     background-color: #091f0298;
 }
+
+
 
 
 
