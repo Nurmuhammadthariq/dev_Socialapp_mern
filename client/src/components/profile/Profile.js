@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
+import ProfileTop from './ProfileTop';
+import ProfileAbout from './ProfileAbout';
 import { getProfileById } from '../../actions/profileAction';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Profile = ({
   getProfileById,
@@ -32,6 +35,15 @@ const Profile = ({
                 Edit Profile
               </Link>
             )}
+
+          <Container>
+            <Row>
+              <Col>
+                <ProfileTop profile={profile} />
+                <ProfileAbout profile={profile} />
+              </Col>
+            </Row>
+          </Container>
         </Fragment>
       )}
     </Fragment>
