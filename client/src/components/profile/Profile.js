@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
+import ProfileExperience from './ProfileExperience';
 import { getProfileById } from '../../actions/profileAction';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -41,6 +42,24 @@ const Profile = ({
               <Col>
                 <ProfileTop profile={profile} />
                 <ProfileAbout profile={profile} />
+              </Col>
+            </Row>
+
+            <Row className="my-3 py-4 text-center transparent-bg">
+              <Col>
+                <h5 className="text-light">Experience</h5>
+                {profile.experience.length > 0 ? (
+                  <Fragment>
+                    {profile.experience.map((experience) => (
+                      <ProfileExperience
+                        key={experience._id}
+                        experience={experience}
+                      />
+                    ))}
+                  </Fragment>
+                ) : (
+                  <h6 className="lead">No experience</h6>
+                )}
               </Col>
             </Row>
           </Container>

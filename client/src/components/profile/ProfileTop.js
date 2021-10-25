@@ -24,7 +24,9 @@ const ProfileTop = ({
       />
       <h3 className="pt-2">{name}</h3>
       <p className="lead">
-        {status} {company ? <span> at {company}, </span> : null}
+        {status} {company ? <span> at {company} </span> : null}
+      </p>
+      <p>
         {location ? <span className="text-color-g">{location}</span> : null}
       </p>
 
