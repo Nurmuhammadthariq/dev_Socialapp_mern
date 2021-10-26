@@ -6,6 +6,8 @@ import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
+import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
 import { getProfileById } from '../../actions/profileAction';
 import { Container, Row, Col } from 'react-bootstrap';
 
@@ -59,6 +61,35 @@ const Profile = ({
                   </Fragment>
                 ) : (
                   <h6 className="lead">No experience</h6>
+                )}
+              </Col>
+            </Row>
+
+            <Row className="my-3 py-4 text-center transparent-bg">
+              <Col>
+                <h5 className="text-light">Education</h5>
+                {profile.education.length > 0 ? (
+                  <Fragment>
+                    {profile.education.map((education) => (
+                      <ProfileEducation
+                        key={education._id}
+                        education={education}
+                      />
+                    ))}
+                  </Fragment>
+                ) : (
+                  <h6 className="lead">No experience</h6>
+                )}
+              </Col>
+            </Row>
+
+            <Row className="my-3 py-4 text-center transparent-bg">
+              <Col>
+                {profile.githubusername && (
+                  <>
+                    <h5 className="text-light my-1">Github Repos</h5>
+                    <ProfileGithub username={profile.githubusername} />
+                  </>
                 )}
               </Col>
             </Row>
