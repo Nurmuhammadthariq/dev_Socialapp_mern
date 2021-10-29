@@ -13,7 +13,7 @@ const NavBar = ({
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="nav justify-content-end">
         <Nav.Link href="/profiles">Developers</Nav.Link>
-        <Nav.Link>
+        <Nav.Link as={Link} to="/posts">
           <i className="fas fa-images"></i> Posts
         </Nav.Link>
         <Nav.Link as={Link} to="/dashboard">
