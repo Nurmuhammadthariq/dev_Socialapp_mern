@@ -327,6 +327,15 @@ ul {
     background-color: #091f0298;
 }
 
+/* Posts Page */
+.comment-count {
+  background: var(--white);
+  color: var(--primary-color);
+  padding: 0.1rem 0.2rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
 
 
 
