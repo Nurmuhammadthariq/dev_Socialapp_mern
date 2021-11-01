@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/postAction';
 import Spinner from '../layout/Spinner';
+import PostForm from './PostForm';
 import PostItem from './PostItem';
 
 const Posts = ({ getPosts, posts: { posts, loading } }) => {
@@ -19,6 +20,7 @@ const Posts = ({ getPosts, posts: { posts, loading } }) => {
         <i className="fas fa-user" /> Welcome to the comunity
       </p>
       {/* Post form */}
+      <PostForm />
       <div className="">
         {posts.map((post) => (
           <PostItem key={post._id} post={post} />
