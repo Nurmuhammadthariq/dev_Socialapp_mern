@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { addPost } from '../../actions/postAction';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
-const PostForm = (props) => {
+const PostForm = ({ addPost }) => {
+  const [text, setText] = useState('');
+
   return (
     <Container>
-      <Row className="justify-content-md">
-        <Col md={8} className="">
-          <Form>
+      <Row>
+        <Col md={8} sm={8} xs={8}>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              addPost({ text });
+              setText('');
+            }}
+          >
             <Form.Group>
               <Form.Control
                 as="textarea"
-                rows={5}
+                rows="5"
                 placeholder="Create Your Post"
                 name="text"
-                style={{ width: '50rem' }}
-                // value={text}
-                // onChange={(e) => setText(e.target.value)}
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                style={{ width: '150%' }}
                 required
               />
             </Form.Group>
@@ -33,6 +42,8 @@ const PostForm = (props) => {
   );
 };
 
-PostForm.propTypes = {};
+PostForm.propTypes = {
+  addPost: PropTypes.func.isRequired,
+};
 
-export default PostForm;
+export default connect(null, { addPost })(PostForm);
