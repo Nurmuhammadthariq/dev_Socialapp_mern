@@ -1,4 +1,4 @@
-# Dev Connector
+# Dev Social App
 
 A platform for developers to connect. They can create their portofolio by adding their experience, education, skills and other important information of their professional career.
 
