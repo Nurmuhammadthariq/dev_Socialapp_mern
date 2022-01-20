@@ -3,7 +3,6 @@
 A platform for developers to connect. They can create their portofolio by adding their experience, education, skills and other important information of their professional career.
 
 Users can also create small posts and like/dislike and comment on other posts.
-<<<<<<< HEAD
 
 # **Get Start** 🚀
 
@@ -42,5 +41,3 @@ npm install
 **Server:** NodeJS, Express, MongoDB, Mongoose
 
     
-=======
->>>>>>> e124f627d839b745c857e73648c08dbf748f1598
