@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://thoriq123:thoriq123@mern.rvhdb.mongodb.net/devConnector?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "2b9389e530f103be3870",
+    "githubSecret": "fd8388744781d5c501726ec26bfc5027481c19fa"
+}
